@@ -16,7 +16,6 @@ import Photos
 class PhotosChangeObserver: RCTEventEmitter {
   override init() {
     super.init();
-    PHPhotoLibrary.shared().register(self)
   }
   
   override func supportedEvents() -> [String]! {
@@ -25,9 +24,17 @@ class PhotosChangeObserver: RCTEventEmitter {
 }
 
 extension PhotosChangeObserver: PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
-        DispatchQueue.main.async { [unowned self] in
-          sendEvent(withName: "onPhotosChanged", body: {})
-        }
-    }
+  func photoLibraryDidChange(_ changeInstance: PHChange) {
+      DispatchQueue.main.async { [unowned self] in
+        sendEvent(withName: "onPhotosChanged", body: {})
+      }
+  }
+  @objc
+  func register() {
+    PHPhotoLibrary.shared().register(self)
+  }
+  @objc
+  func unregister() {
+    PHPhotoLibrary.shared().unregisterChangeObserver(self)
+  }
 }
