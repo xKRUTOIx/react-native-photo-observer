@@ -1,3 +1,4 @@
 import {NativeEventEmitter, NativeModules} from 'react-native';
 
-export const RNPhotoObserver = new NativeEventEmitter(NativeModules.PhotosChangeObserver);
+export const PhotosChangeObserverModule = NativeModules.PhotosChangeObserver;
+export const RNPhotoObserver = new NativeEventEmitter(PhotosChangeObserverModule);
