@@ -2,7 +2,7 @@
 
 ### What it does
 
-This module has a listener that triggers every time when amount of photos in a library were changed, it implements `photoLibraryDidChange`event from `PHPhotoLibraryChangeObserver`. 
+This module has a listener which is triggered every time when amount of photos in a library has been changed. It implements `photoLibraryDidChange`event from`PHPhotoLibraryChangeObserver`. 
 
 (iOS only)
 
